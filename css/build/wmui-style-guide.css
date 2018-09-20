@@ -2,37 +2,29 @@
 /* Load files from 'node_modules' folders with postCSS-import plugin.
  * Modules specified in package.json file */
 /**
- * WikimediaUI Base v0.10.0
+ * WikimediaUI Base v0.12.0
  * Wikimedia Foundation user interface base variables
  */
 :root {
 	/* == Breakpoints == */
+	/* The following numbers are prone to change with new information. */
+
 	/**
 	 * Minimum available screen width at which a device can be considered a mobile device
 	 * Many older feature phones have screens smaller than this value.
-	 * Number is prone to change with new information.
 	 */
 
 	/**
 	 * Minimum available screen width at which a device can be considered a tablet
 	 * The number is currently based on the device width of a Samsung Galaxy S5 mini and is low
-	 * enough to cover iPad (768px). Number is prone to change with new information.
+	 * enough to cover iPad (768px).
 	 */
 
-	/**
-	 * Minimum available screen width at which a device can be considered a desktop
-	 * Number is prone to change with new information.
-	 */
+	/* Minimum available screen width at which a device can be considered a desktop */
 
-	/**
-	 * Wider desktop breakpoint, currently used in Flow.
-	 * Number is prone to change with new information.
-	 */
+	/* Wider desktop breakpoint, currently used in Flow. */
 
-	/**
-	 * Extra wide desktop breakpoint
-	 * Number is prone to change with new information.
-	 */
+	/* Extra wide desktop breakpoint */
 
 
 	/* == Colors == */
@@ -43,7 +35,9 @@
 	 */    /* = HSB 0°, 0%, 0% */    /* = HSB 0°, 0%, 13% */ /* = HSB 207°, 10%, 36%; WCAG 2.0 level AAA 7.09:1 contrast ratio on `#fff` */ /* = HSB 210°, 9%, 49%; WCAG 2.0 level AA at 4.52:1 contrast ratio on `#fff` */ /* = HSB 212°, 8%, 69% */ /* = HSB 213°, 4%, 82% */ /* = HSB 220°, 3%, 94% */ /* = HSB 210°, 1%, 98% */    /* = HSB 0°, 0%, 100% */ /* = HSB 220°, 70%, 55% */    /* = HSB 220°, 75%, 80% */ /* = HSB 214°, 8%, 100% */ /* = HSB 360°, 80%, 70% */    /* = HSB 360°, 77%, 87% */ /* = HSB 3°, 9%, 100% */ /* = HSB 36°, 100%, 67% */    /* = HSB 45°, 80%, 100% */ /* = HSB 39°, 9%, 100% */ /* = HSB 167°, 85%, 53% */ /* = HSB 167°, 100%, 69% */ /* = HSB 166°, 16%, 99% */
 
 	/* Background Colors */
-	/* 'Framed' UI elements (Framed Buttons, Dropdowns, ToggleSwitches...) */
+	/* 'Framed' UI elements (Framed Buttons, Dropdowns, ToggleSwitches…) */
+	/* 'Filled' UI elements (Checkboxes, Radios, ProgressBars…) */
+	/* Toolbar and Tools */
 	/* Tabs Navigation Background Color */
 	/* Highlight Colors, RGBA Colors include hex fallback on `#fff` for IE 6/7/8 */
 
@@ -52,6 +46,7 @@
 	/* 'Destructive' Color, Background Color and states */ /* ~= `filter: brightness( 120% )` */
 	/* Secondary Color and states (links only) */
 	/* Validation error feedback */
+	/* Toolbar and Tools */ /* Used here in combination with `:hover` background-color turning light grey */
 
 
 	/* Opacity */ /* = `#7d7d7d` on `background-color: #fff`; HSB 0°, 0%, 49% */ /* = `#222` on `background-color: #fff` */ /* = `#454545` on `background-color: #fff`, closest to `#444` */
@@ -62,10 +57,13 @@
 
 
 	/* == Box Model properties == */
+	/* `@*size` variables are used for `*width` & `*height` properties */ /* values used for `min-*` are defined in `px`, see T130691 */
+
 	/* Max Widths */ /* = `460px` at `16px` base, see T95367 */
 
 	/* Border */
 	/* Border Colors */ /* See T168029 */
+	/* Border Styles */
 	/* Border Widths */
 	/* Border Radius */
 
@@ -83,7 +81,8 @@
 
 
 	/* == Animation & Transition == */
-	/* Transitions */
+	/* Transitions */ /* `ease` is the initial value */
+	/* `ease-out` is preferably used on human initiated transitions, for example dialogs */
 	/* Transitions > Durations */
 }
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -513,9 +512,9 @@ h5,
 h6 {
 	margin: 3.2rem 0 0;
 	line-height: 1.25;
-	-webkit-transition: font-size 250ms, font-weight 250ms;
-	-moz-transition: font-size 250ms, font-weight 250ms;
-	transition: font-size 250ms, font-weight 250ms;
+	-webkit-transition: font-size var( --transition-medium ), font-weight var( --transition-medium );
+	-moz-transition: font-size var( --transition-medium ), font-weight var( --transition-medium );
+	transition: font-size var( --transition-medium ), font-weight var( --transition-medium );
 }
 h2,
 h3,
@@ -707,9 +706,9 @@ sup {
 			color: inherit;
 			display: inline-block;
 			padding: 1.2rem 3.2rem 0;
-			-webkit-transition: color 250ms;
-			-moz-transition: color 250ms;
-			transition: color 250ms;
+			-webkit-transition: color var( --transition-medium );
+			-moz-transition: color var( --transition-medium );
+			transition: color var( --transition-medium );
 		}
 .site__title a:hover {
 			color: #000; /* --color-base-emphasized */
@@ -733,11 +732,11 @@ sup {
 .btn--nav-main i {
 		display: block;
 		height: 4.2rem;
-		-webkit-transition: color 250ms, -webkit-box-shadow 250ms;
-		transition: color 250ms, -webkit-box-shadow 250ms;
-		-moz-transition: color 250ms, box-shadow 250ms, -moz-box-shadow 250ms;
-		transition: color 250ms, box-shadow 250ms;
-		transition: color 250ms, box-shadow 250ms, -webkit-box-shadow 250ms, -moz-box-shadow 250ms;
+		-webkit-transition: color var( --transition-medium ), -webkit-box-shadow var( --transition-medium );
+		transition: color var( --transition-medium ), -webkit-box-shadow var( --transition-medium );
+		-moz-transition: color var( --transition-medium ), box-shadow var( --transition-medium ), -moz-box-shadow var( --transition-medium );
+		transition: color var( --transition-medium ), box-shadow var( --transition-medium );
+		transition: color var( --transition-medium ), box-shadow var( --transition-medium ), -webkit-box-shadow var( --transition-medium ), -moz-box-shadow var( --transition-medium );
 	}
 .btn--nav-main i:before,
 	.btn--nav-main i:after {
@@ -832,9 +831,9 @@ sup {
 	padding: 0.8rem 1.2rem;
 	font-size: 1.6rem;
 	text-decoration: none;
-	-webkit-transition: background-color 250ms, color 250ms, padding 250ms;
-	-moz-transition: background-color 250ms, color 250ms, padding 250ms;
-	transition: background-color 250ms, color 250ms, padding 250ms;
+	-webkit-transition: background-color var( --transition-medium ), color var( --transition-medium ), padding var( --transition-medium );
+	-moz-transition: background-color var( --transition-medium ), color var( --transition-medium ), padding var( --transition-medium );
+	transition: background-color var( --transition-medium ), color var( --transition-medium ), padding var( --transition-medium );
 }
 .nav--main a:hover,
 .nav--main a:focus {
@@ -865,9 +864,9 @@ sup {
          border-radius: 0 2px 2px 0;
 	padding-left: 1.6rem;
 	font-size: 1.4rem;
-	-webkit-transition: background-color 250ms, color 250ms;
-	-moz-transition: background-color 250ms, color 250ms;
-	transition: background-color 250ms, color 250ms;
+	-webkit-transition: background-color var( --transition-medium ), color var( --transition-medium );
+	-moz-transition: background-color var( --transition-medium ), color var( --transition-medium );
+	transition: background-color var( --transition-medium ), color var( --transition-medium );
 }
 .nav--main .nav__sub-item.is-on a {
 	background-color: #fff;
@@ -1014,9 +1013,9 @@ sup {
 		margin-right: 1.35rem;
 	}
 .color-section .color .color-code--hsb {
-		-webkit-transition: opacity 250ms;
-		-moz-transition: opacity 250ms;
-		transition: opacity 250ms;
+		-webkit-transition: opacity var( --transition-medium );
+		-moz-transition: opacity var( --transition-medium );
+		transition: opacity var( --transition-medium );
 	}
 .color-section .color:hover .color-code--hsb {
 			opacity: 1;
@@ -1142,11 +1141,11 @@ sup {
 		   -moz-transform: translateY( -200% );
 		    -ms-transform: translateY( -200% );
 		        transform: translateY( -200% );
-		-webkit-transition: left 250ms, right 250ms, -webkit-transform 250ms;
-		transition: left 250ms, right 250ms, -webkit-transform 250ms;
-		-moz-transition: left 250ms, right 250ms, transform 250ms, -moz-transform 250ms;
-		transition: left 250ms, right 250ms, transform 250ms;
-		transition: left 250ms, right 250ms, transform 250ms, -webkit-transform 250ms, -moz-transform 250ms;
+		-webkit-transition: left var( --transition-medium ), right var( --transition-medium ), -webkit-transform var( --transition-medium );
+		transition: left var( --transition-medium ), right var( --transition-medium ), -webkit-transform var( --transition-medium );
+		-moz-transition: left var( --transition-medium ), right var( --transition-medium ), transform var( --transition-medium ), -moz-transform var( --transition-medium );
+		transition: left var( --transition-medium ), right var( --transition-medium ), transform var( --transition-medium );
+		transition: left var( --transition-medium ), right var( --transition-medium ), transform var( --transition-medium ), -webkit-transform var( --transition-medium ), -moz-transform var( --transition-medium );
 	}
 	.trigger--nav-main:checked + .nav--main {
 		-webkit-transform: translateY( 0 );
@@ -1165,9 +1164,9 @@ sup {
 	.content-box,
 	.site__title a,
 	.nav--main a {
-		-webkit-transition: padding 250ms;
-		-moz-transition: padding 250ms;
-		transition: padding 250ms;
+		-webkit-transition: padding var( --transition-medium );
+		-moz-transition: padding var( --transition-medium );
+		transition: padding var( --transition-medium );
 	}
 
 	.site__title {
@@ -1280,9 +1279,9 @@ sup {
 	.lnk--contribute span {
 		display: inline;
 		opacity: 0;
-		-webkit-transition: opacity 250ms;
-		-moz-transition: opacity 250ms;
-		transition: opacity 250ms;
+		-webkit-transition: opacity var( --transition-medium );
+		-moz-transition: opacity var( --transition-medium );
+		transition: opacity var( --transition-medium );
 	}
 
 	.figures-do-dont .figure {
@@ -1319,9 +1318,9 @@ sup {
 	.col--start {
 		width: 20.8rem;
 		z-index: 1;
-		-webkit-transition: width 250ms;
-		-moz-transition: width 250ms;
-		transition: width 250ms;
+		-webkit-transition: width var( --transition-medium );
+		-moz-transition: width var( --transition-medium );
+		transition: width var( --transition-medium );
 	}
 	.col--end {
 		margin-left: -20.8rem;
